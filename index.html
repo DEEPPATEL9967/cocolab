@@ -16,123 +16,136 @@
         }
 
         body {
-            background: #0f0f0f;
+            background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
             color: white;
         }
 
+        /* HEADER */
         header {
-            background: #1c1c1c;
-            padding: 20px 10%;
+            padding: 25px 10%;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            font-size: 26px;
+            font-size: 28px;
             font-weight: 700;
-            color: #ffcc70;
+            letter-spacing: 2px;
+            color: #d4af37;
         }
 
-        nav a {
-            color: white;
-            margin-left: 20px;
-            text-decoration: none;
-        }
-
+        /* HERO */
         .hero {
-            height: 85vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)),
-                url('https://images.unsplash.com/photo-1589308078056-fd01c83f2fbb');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
             text-align: center;
+            padding: 100px 20px 60px;
         }
 
         .hero h1 {
-            font-size: 50px;
-            margin-bottom: 20px;
+            font-size: 60px;
+            color: #d4af37;
         }
 
         .hero p {
-            margin-bottom: 30px;
+            margin-top: 15px;
+            font-size: 18px;
+            color: #ccc;
         }
 
-        .btn {
-            padding: 12px 25px;
-            background: #ffcc70;
-            color: black;
-            border: none;
-            border-radius: 30px;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
+        /* SECTION */
         .section {
             padding: 60px 10%;
-            text-align: center;
         }
 
         .section h2 {
+            text-align: center;
             margin-bottom: 40px;
-            color: #ffcc70;
+            color: #d4af37;
         }
 
+        /* MENU */
         .menu {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            gap: 25px;
         }
 
         .card {
             background: #1c1c1c;
-            padding: 20px;
+            padding: 25px;
             border-radius: 15px;
+            border: 1px solid #333;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            border: 1px solid #d4af37;
+            transform: translateY(-5px);
         }
 
         .price {
-            margin-top: 10px;
-            color: #ffcc70;
-            font-weight: 600;
-        }
-
-        /* Order Form */
-        .order-box {
-            background: #1c1c1c;
-            padding: 30px;
-            border-radius: 15px;
-            max-width: 400px;
-            margin: 0 auto;
-        }
-
-        select,
-        input {
-            width: 100%;
-            padding: 10px;
             margin: 10px 0;
+            font-weight: 600;
+            color: #d4af37;
+        }
+
+        input {
+            width: 60px;
+            padding: 6px;
             border: none;
             border-radius: 5px;
         }
 
+        button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .add-btn {
+            background: #d4af37;
+            color: black;
+        }
+
+        /* CART */
+        .cart {
+            margin-top: 60px;
+            background: #1c1c1c;
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid #333;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+
+        .total {
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #d4af37;
+        }
+
         .order-btn {
+            margin-top: 20px;
             width: 100%;
-            padding: 12px;
+            padding: 14px;
             background: #25D366;
             color: white;
-            border: none;
             border-radius: 30px;
-            font-weight: bold;
-            cursor: pointer;
+            font-size: 16px;
         }
 
         footer {
-            background: #1c1c1c;
-            padding: 20px;
             text-align: center;
+            padding: 30px;
+            margin-top: 60px;
+            color: #777;
         }
     </style>
 </head>
@@ -141,98 +154,117 @@
 
     <header>
         <div class="logo">COCOLAB</div>
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#menu">Menu</a>
-            <a href="#order">Order</a>
-        </nav>
     </header>
 
-    <section class="hero" id="home">
-        <h1>Welcome to COCOLAB</h1>
+    <section class="hero">
+        <h1>COCOLAB</h1>
         <p>Thick. Cold. Addictive.</p>
-        <button class="btn" onclick="scrollToOrder()">Order Now</button>
     </section>
 
-    <section class="section" id="menu">
-        <h2>Our Premium Flavours</h2>
-        <div class="menu">
-            <div class="card">
-                <h3>Milk Chocolate Creamy Coco</h3>
-                <div class="price">₹70</div>
-            </div>
-            <div class="card">
-                <h3>Oreo Cold Coco</h3>
-                <div class="price">₹90</div>
-            </div>
-            <div class="card">
-                <h3>Hazelnut Cold Coco</h3>
-                <div class="price">₹110</div>
-            </div>
-            <div class="card">
-                <h3>Banana Chocolate Coco</h3>
-                <div class="price">₹85</div>
-            </div>
-            <div class="card">
-                <h3>Salted Caramel Coco</h3>
-                <div class="price">₹100</div>
-            </div>
-            <div class="card">
-                <h3>Protein Cold Coco</h3>
-                <div class="price">₹130</div>
-            </div>
-            <div class="card">
-                <h3>Triple Layer Signature Coco</h3>
-                <div class="price">₹120</div>
-            </div>
-        </div>
-    </section>
+    <section class="section">
+        <h2>Select Your Flavours</h2>
 
-    <section class="section" id="order">
-        <h2>Order Online</h2>
-        <div class="order-box">
-            <select id="flavor">
-                <option value="">Select Flavor</option>
-                <option>Milk Chocolate Creamy Coco - ₹70</option>
-                <option>Oreo Cold Coco - ₹90</option>
-                <option>Hazelnut Cold Coco - ₹110</option>
-                <option>Banana Chocolate Coco - ₹85</option>
-                <option>Salted Caramel Coco - ₹100</option>
-                <option>Protein Cold Coco - ₹130</option>
-                <option>Triple Layer Signature Coco - ₹120</option>
-            </select>
+        <div class="menu" id="menu"></div>
 
-            <input type="number" id="quantity" placeholder="Enter Quantity" min="1">
-
-            <button class="order-btn" onclick="orderNow()">Order on WhatsApp</button>
+        <div class="cart">
+            <h3>Your Cart</h3>
+            <div id="cartItems"></div>
+            <div class="total">Total: ₹<span id="total">0</span></div>
+            <button class="order-btn" onclick="sendWhatsApp()">Order on WhatsApp</button>
         </div>
     </section>
 
     <footer>
-        © 2026 COCOLAB | Made with ❤️ in Ahmedabad
+        © 2026 COCOLAB | Premium Cold Coco Experience
     </footer>
 
     <script>
-        function scrollToOrder() {
-            document.getElementById("order").scrollIntoView({ behavior: "smooth" });
+        const phoneNumber = "919328035827"; // Replace with your WhatsApp number
+
+        const products = [
+            { name: "Milk Chocolate Creamy Coco", price: 70 },
+            { name: "Oreo Cold Coco", price: 90 },
+            { name: "Hazelnut Cold Coco", price: 110 },
+            { name: "Banana Chocolate Coco", price: 85 },
+            { name: "Salted Caramel Coco", price: 100 },
+            { name: "Protein Cold Coco", price: 130 },
+            { name: "Triple Layer Signature Coco", price: 120 }
+        ];
+
+        let cart = [];
+
+        function loadMenu() {
+            const menu = document.getElementById("menu");
+            products.forEach((product, index) => {
+                menu.innerHTML += `
+            <div class="card">
+                <h3>${product.name}</h3>
+                <div class="price">₹${product.price}</div>
+                <input type="number" min="1" value="1" id="qty${index}">
+                <button class="add-btn" onclick="addToCart(${index})">Add</button>
+            </div>
+        `;
+            });
         }
 
-        function orderNow() {
-            var flavor = document.getElementById("flavor").value;
-            var qty = document.getElementById("quantity").value;
+        function addToCart(index) {
+            const qty = parseInt(document.getElementById("qty" + index).value);
+            const product = products[index];
 
-            if (flavor === "" || qty === "") {
-                alert("Please select flavor and quantity");
+            const existing = cart.find(item => item.name === product.name);
+
+            if (existing) {
+                existing.qty += qty;
+            } else {
+                cart.push({ ...product, qty: qty });
+            }
+
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartDiv = document.getElementById("cartItems");
+            cartDiv.innerHTML = "";
+            let total = 0;
+
+            cart.forEach((item, i) => {
+                total += item.price * item.qty;
+                cartDiv.innerHTML += `
+            <div class="cart-item">
+                ${item.name} x ${item.qty} = ₹${item.price * item.qty}
+                <button onclick="removeItem(${i})">❌</button>
+            </div>
+        `;
+            });
+
+            document.getElementById("total").innerText = total;
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        function sendWhatsApp() {
+            if (cart.length === 0) {
+                alert("Cart is empty!");
                 return;
             }
 
-            var phoneNumber = "919328035827"; // Replace with your WhatsApp number
-            var message = "Hello COCOLAB! I want to order:\n\nFlavor: " + flavor + "\nQuantity: " + qty;
+            let message = "Hello COCOLAB! I want to order:%0A%0A";
+            let total = 0;
 
-            var url = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(message);
+            cart.forEach(item => {
+                message += `${item.name} x ${item.qty} = ₹${item.price * item.qty}%0A`;
+                total += item.price * item.qty;
+            });
 
-            window.open(url, "_blank");
+            message += `%0ATotal Amount: ₹${total}`;
+
+            window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank");
         }
+
+        loadMenu();
     </script>
 
 </body>
