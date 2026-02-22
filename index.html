@@ -1,137 +1,240 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>COCOLAB | Premium Cold Coco</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COCOLAB | Premium Cold Coco</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body{background:#0f0f0f;color:white;}
-header{background:#1c1c1c;padding:20px 10%;display:flex;justify-content:space-between;align-items:center;}
-.logo{font-size:26px;font-weight:700;color:#ffcc70;}
-.section{padding:60px 10%;text-align:center;}
-h2{color:#ffcc70;margin-bottom:30px;}
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
 
-.menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
-.card{background:#1c1c1c;padding:20px;border-radius:15px;}
-.price{color:#ffcc70;margin:10px 0;}
-button{padding:8px 15px;border:none;border-radius:20px;cursor:pointer;font-weight:600;}
-.add-btn{background:#ffcc70;color:black;}
-.cart{background:#1c1c1c;padding:20px;border-radius:15px;margin-top:40px;}
-.cart-item{display:flex;justify-content:space-between;margin:10px 0;}
-.total{margin-top:15px;font-weight:bold;color:#ffcc70;}
-.order-btn{margin-top:20px;background:#25D366;color:white;width:100%;padding:12px;border-radius:30px;}
-input{width:60px;padding:5px;border-radius:5px;border:none;}
-</style>
+        body {
+            background: #0f0f0f;
+            color: white;
+        }
+
+        header {
+            background: #1c1c1c;
+            padding: 20px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 700;
+            color: #ffcc70;
+        }
+
+        nav a {
+            color: white;
+            margin-left: 20px;
+            text-decoration: none;
+        }
+
+        .hero {
+            height: 85vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)),
+                url('https://images.unsplash.com/photo-1589308078056-fd01c83f2fbb');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            background: #ffcc70;
+            color: black;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .section {
+            padding: 60px 10%;
+            text-align: center;
+        }
+
+        .section h2 {
+            margin-bottom: 40px;
+            color: #ffcc70;
+        }
+
+        .menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: #1c1c1c;
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        .price {
+            margin-top: 10px;
+            color: #ffcc70;
+            font-weight: 600;
+        }
+
+        /* Order Form */
+        .order-box {
+            background: #1c1c1c;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        select,
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .order-btn {
+            width: 100%;
+            padding: 12px;
+            background: #25D366;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        footer {
+            background: #1c1c1c;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
 </head>
+
 <body>
 
-<header>
-    <div class="logo">COCOLAB</div>
-</header>
+    <header>
+        <div class="logo">COCOLAB</div>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#menu">Menu</a>
+            <a href="#order">Order</a>
+        </nav>
+    </header>
 
-<section class="section">
-    <h2>Select Your Flavours</h2>
+    <section class="hero" id="home">
+        <h1>Welcome to COCOLAB</h1>
+        <p>Thick. Cold. Addictive.</p>
+        <button class="btn" onclick="scrollToOrder()">Order Now</button>
+    </section>
 
-    <div class="menu" id="menu"></div>
-
-    <div class="cart">
-        <h3>Your Cart</h3>
-        <div id="cartItems"></div>
-        <div class="total">Total: ₹<span id="total">0</span></div>
-        <button class="order-btn" onclick="sendWhatsApp()">Order on WhatsApp</button>
-    </div>
-</section>
-
-<script>
-const phoneNumber = "91YOURNUMBER"; // Replace with your number
-
-const products = [
-    {name:"Milk Chocolate Creamy Coco", price:70},
-    {name:"Oreo Cold Coco", price:90},
-    {name:"Hazelnut Cold Coco", price:110},
-    {name:"Banana Chocolate Coco", price:85},
-    {name:"Salted Caramel Coco", price:100},
-    {name:"Protein Cold Coco", price:130},
-    {name:"Triple Layer Signature Coco", price:120}
-];
-
-let cart = [];
-
-function loadMenu(){
-    const menuDiv = document.getElementById("menu");
-    products.forEach((product,index)=>{
-        menuDiv.innerHTML += `
+    <section class="section" id="menu">
+        <h2>Our Premium Flavours</h2>
+        <div class="menu">
             <div class="card">
-                <h3>${product.name}</h3>
-                <div class="price">₹${product.price}</div>
-                <input type="number" min="1" value="1" id="qty${index}">
-                <button class="add-btn" onclick="addToCart(${index})">Add</button>
+                <h3>Milk Chocolate Creamy Coco</h3>
+                <div class="price">₹70</div>
             </div>
-        `;
-    });
-}
-
-function addToCart(index){
-    const qty = parseInt(document.getElementById("qty"+index).value);
-    const product = products[index];
-
-    const existing = cart.find(item=>item.name===product.name);
-    if(existing){
-        existing.qty += qty;
-    }else{
-        cart.push({...product, qty:qty});
-    }
-
-    updateCart();
-}
-
-function updateCart(){
-    const cartDiv = document.getElementById("cartItems");
-    cartDiv.innerHTML="";
-    let total = 0;
-
-    cart.forEach((item,i)=>{
-        total += item.price * item.qty;
-        cartDiv.innerHTML += `
-            <div class="cart-item">
-                ${item.name} x ${item.qty} = ₹${item.price*item.qty}
-                <button onclick="removeItem(${i})">❌</button>
+            <div class="card">
+                <h3>Oreo Cold Coco</h3>
+                <div class="price">₹90</div>
             </div>
-        `;
-    });
+            <div class="card">
+                <h3>Hazelnut Cold Coco</h3>
+                <div class="price">₹110</div>
+            </div>
+            <div class="card">
+                <h3>Banana Chocolate Coco</h3>
+                <div class="price">₹85</div>
+            </div>
+            <div class="card">
+                <h3>Salted Caramel Coco</h3>
+                <div class="price">₹100</div>
+            </div>
+            <div class="card">
+                <h3>Protein Cold Coco</h3>
+                <div class="price">₹130</div>
+            </div>
+            <div class="card">
+                <h3>Triple Layer Signature Coco</h3>
+                <div class="price">₹120</div>
+            </div>
+        </div>
+    </section>
 
-    document.getElementById("total").innerText = total;
-}
+    <section class="section" id="order">
+        <h2>Order Online</h2>
+        <div class="order-box">
+            <select id="flavor">
+                <option value="">Select Flavor</option>
+                <option>Milk Chocolate Creamy Coco - ₹70</option>
+                <option>Oreo Cold Coco - ₹90</option>
+                <option>Hazelnut Cold Coco - ₹110</option>
+                <option>Banana Chocolate Coco - ₹85</option>
+                <option>Salted Caramel Coco - ₹100</option>
+                <option>Protein Cold Coco - ₹130</option>
+                <option>Triple Layer Signature Coco - ₹120</option>
+            </select>
 
-function removeItem(index){
-    cart.splice(index,1);
-    updateCart();
-}
+            <input type="number" id="quantity" placeholder="Enter Quantity" min="1">
 
-function sendWhatsApp(){
-    if(cart.length===0){
-        alert("Cart is empty!");
-        return;
-    }
+            <button class="order-btn" onclick="orderNow()">Order on WhatsApp</button>
+        </div>
+    </section>
 
-    let message = "Hello COCOLAB! I want to order:%0A%0A";
-    let total = 0;
+    <footer>
+        © 2026 COCOLAB | Made with ❤️ in Ahmedabad
+    </footer>
 
-    cart.forEach(item=>{
-        message += `${item.name} x ${item.qty} = ₹${item.price*item.qty}%0A`;
-        total += item.price * item.qty;
-    });
+    <script>
+        function scrollToOrder() {
+            document.getElementById("order").scrollIntoView({ behavior: "smooth" });
+        }
 
-    message += `%0ATotal Amount: ₹${total}`;
+        function orderNow() {
+            var flavor = document.getElementById("flavor").value;
+            var qty = document.getElementById("quantity").value;
 
-    window.open(`https://wa.me/${phoneNumber}?text=${message}`,"_blank");
-}
+            if (flavor === "" || qty === "") {
+                alert("Please select flavor and quantity");
+                return;
+            }
 
-loadMenu();
-</script>
+            var phoneNumber = "919328035827"; // Replace with your WhatsApp number
+            var message = "Hello COCOLAB! I want to order:\n\nFlavor: " + flavor + "\nQuantity: " + qty;
+
+            var url = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(message);
+
+            window.open(url, "_blank");
+        }
+    </script>
 
 </body>
+
 </html>
